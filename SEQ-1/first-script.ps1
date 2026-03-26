@@ -1,0 +1,1 @@
+Write-Host "Bienvenue dans PowerShell avec VS Code !"

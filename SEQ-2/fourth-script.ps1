@@ -1,0 +1,1 @@
+gc .\SEQ-2\textes.txt | sort | Out-File .\SEQ-2\tri.txt
