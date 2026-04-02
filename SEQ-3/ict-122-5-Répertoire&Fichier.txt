@@ -1,0 +1,28 @@
+﻿1. le premier est impossible
+2. NI -Name text.txt -Path .\SEQ-3\ -Value "Bonjour toto" ou echo "Bonjour toto" > .\SEQ-3\test.txt
+3. bah ça créer le dossier c'est tout
+4. 
+ni -Path .\SEQ-3\ -ItemType Directory -Name "REP1"
+ni -Path .\SEQ-3\ -ItemType Directory -Name "REP2"
+ni -Path .\SEQ-3\ -ItemType Directory -Name "REP3"
+
+ni -Path .\SEQ-3\REP1 -ItemType Directory -Name "sousREP1Avec"
+ni -Path .\SEQ-3\REP1 -ItemType Directory -Name "sousREP1Sans"
+
+ni -Path .\SEQ-3\REP1\sousREP1Avec -ItemType File -Name "toto.txt"
+ni -Path .\SEQ-3\REP1\sousREP1Avec -ItemType File -Name "titi.rtf"
+
+ni -Path .\SEQ-3\REP1\sousREP1Sans -ItemType File -Name "tata.bmp"
+
+ni -Path .\SEQ-3\REP2 -ItemType Directory -Name "sousREP2Avec"
+ni -Path .\SEQ-3\REP2 -ItemType Directory -Name "sousREP2Sans"
+
+ni -Path .\SEQ-3\REP3 -ItemType Directory -Name "sousREP1Avec"
+ni -Path .\SEQ-3\REP3 -ItemType Directory -Name "sousREP1Sans"
+
+5. Get-ChildItem -Path .\SEQ-3 | Where {$_.Extension -eq ".txt"}
+
+6. Get-ChildItem -Path .\SEQ-3 -Recurse | Where {$_.Extension -eq ".*", $_.Extension -notcontains ".rtf"} | Format-List Name, File
+
+7. move-item -Path .\SEQ-3\truc.txt -Destination .\SEQ-3\REP3\sousREP1Avec -Force
+    Lorsque nous avons le nom de se que nous voulons déplacer et où nous voulons le déplacer et si nous avons la permission de le faire

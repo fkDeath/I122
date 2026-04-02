@@ -1,0 +1,20 @@
+1. Get-Help
+2. Get-Help - et tab
+3. get-command -CommandType Function
+4. Get-Alias g*
+5. * | Get-Member
+6. Get-Service -Name *Network*
+7. Get-Process | Get-Member
+8. 
+$a=3 
+$b="toto"
+
+$a , $b | Get-Member
+
+9. Get-Help Get-Disk
+
+Defis : 
+
+1. (Get-Command -CommandType CmdLet).Count
+
+2. Get-Service -Name *time* | Where-Object {$_.Status -eq "Running"}

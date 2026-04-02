@@ -1,0 +1,10 @@
+1. Write-Host Hello -ForegroundColor Blue -BackgroundColor Red
+2. Write-Output "Hello titi" > .\toto.txt 
+Il va écrasé le fichier et écrire se qu'il doit écrire
+3. Write-Output "Hello titi" >> .\toto.txt 
+Il va ajouté à la dernière ligne la valeur décidé
+4. ">" va écrasé le fichier et écrire dedans tandis que ">>" vas éditer le fichier et ajouté une nouvelle ligne avec la données voulue
+5. Le premier "Write-Output Get-Process" va afficher "Get-Process" tandis que la 2ème solution va appeller la variable "$p1" et donc l'éxécuter
+6. Alors dans se cas là il va affiché le string "Get-Process" en toute lettre sur la console
+7. Get-Partition
+8. Get-Partition | Format-List DriveLetter, Size, Type ou Get-Disk | Get-Partition | where {$_.DriveLetter} | Format-List DriveLetter, Size, Type
