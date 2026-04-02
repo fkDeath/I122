@@ -13,3 +13,4 @@
 $nb = (Get-CimInstance -ClassName CIM_Keyboard).NumberOfFunctionKeys
 
 Write-Host $nb
+

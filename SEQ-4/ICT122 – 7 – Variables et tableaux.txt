@@ -1,9 +1,68 @@
 ﻿1. 
-$? = 
-$_ =
-$ARGS = 
-$FALSE = 
-$TRUE = 
-$NULL = 
-$PSITEM = 
-$PWD = 
+$? = Contient un booléen de l'état de l'exécution de la dernière commande
+$_ = Contient l'objet actif de la pipeline pouvant être utilisé dans une pipeline
+$ARGS = Contient la liste des arguments qui ne sont pas dans des paramètres de commandes
+$FALSE = Désigne un élement FAUX / Non Actif
+$TRUE = Désigne un élement VRAIS / Actif
+$NULL =  Désign un élement sans valeur
+$PSITEM = La même chose que $_
+$PWD = Contient le chemin absolu du répertoire actuel
+
+2.
+MODULO : 2%100
+Round [Math]::Round($nombre, $nombreMaxAprèsLaVirgule)
+-eq = Équivalent mais ne respecte pas la casse
+-ceq = Équivalent et respecte la casse
+-lt = Less Than 
+-gt Greater Than
+> = Écrase ou crée un fichier avec la sortie de la commande (avec ou sans pipeline)
+>> = Edite un fichier éxistant sans l'écraser et ajoute à la fin du fichier la sortie de la commande (avec ou sans pipeline)
+-is = Si et sort un booléen (Vrais ou Faux)
+-match = Correspont et sort un booléen (Vrais ou Faux)
+-join = -join($v1, $v2) Fais rejoindre 2 valeur pour faire une sortie comportant les 2 valeurs (ou plus) mis dans les paramètres
+-replace = "hello world" -replace "w", "W" -replace "h", "H" remplace le premier paramètres par le 2ème
+-like = "hello world" -like "*o wo*" le paterne est exacte par rapport au paramètre mis
+
+3. Non
+$i = 1
+write-host ($i += 2) > 3
+write-host ($i =+ 2) > 2
+
+4. "TOTOTOTO" -replace "O", "A"
+
+5. $PWD = Get-Location
+
+6. Get-Service | Where-Object { $_.name -like "W*" }
+
+7. Car la variable $a est une variable de type [double] et ne peut pas contenir de texte
+
+8. 
+$tab = 'toto', 3.25, 3469, "HELLO WORLD"
+$tab[2] = $null
+$tab
+
+9. $tab | gm
+
+10. 
+$tab += "u"
+$tab += "t"
+
+Ajoute à la suite les élements
+
+11.
+a). $tab
+b).
+foreach ($item in $tab) {
+    write-host $item
+}
+c).
+$tabLength = $tab.Length
+for ($i = 0; $i -lt $tabLength; $i++) {
+    if ($tab[$i] -eq 13 -or $tab[$i] -eq 22) {
+        Write-Host $tab[$i]
+    }
+}
+D).
+foreach ($item in $tab) {
+    Write-Host "la ligne est : $item"
+}
