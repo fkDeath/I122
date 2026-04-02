@@ -1,0 +1,9 @@
+﻿1. 
+$? = 
+$_ =
+$ARGS = 
+$FALSE = 
+$TRUE = 
+$NULL = 
+$PSITEM = 
+$PWD = 

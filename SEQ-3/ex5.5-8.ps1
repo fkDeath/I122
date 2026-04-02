@@ -7,3 +7,5 @@
 # New-Item -Path HKLM:\SOFTWARE -Name ETML -ItemType Directory
 
 # New-ItemProperty -Path HKLM:\SOFTWARE\ETML -Name "tata" -Value "tatadata" -PropertyType String
+
+# Get-ItemProperty -Path HKLM:\SOFTWARE\ETML -Name "tata" | Format-List tata
