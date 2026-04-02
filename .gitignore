@@ -1,8 +1,18 @@
-#output
+# output
 *.txt
+
+# Security
+*.key
+*.pgp
+*.pem
 *.gpg
-!textes.txt
-!ict*.txt
+
+# Directory
 new-5-4
 rep*\sousREP*Avec\*
 rep*\sousREP*Sans\*
+
+# Execptions
+!textes.txt
+!ict*.txt
+!ICT122*.txt
