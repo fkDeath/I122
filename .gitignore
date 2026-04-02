@@ -1,3 +1,8 @@
 #output
 *.txt
+*.gpg
 !textes.txt
+!ict*.txt
+new-5-4
+rep*\sousREP*Avec\*
+rep*\sousREP*Sans\*
