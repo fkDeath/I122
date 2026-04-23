@@ -10,7 +10,7 @@
 
 # Get-CIMInstance -ClassName CIM_DiskPartition | Format-Table Name, BootPartition
 
-$nb = (Get-CimInstance -ClassName CIM_Keyboard).NumberOfFunctionKeys
+# $nb = (Get-CimInstance -ClassName CIM_Keyboard).NumberOfFunctionKeys
 
-Write-Host $nb
+# Write-Host $nb
 
