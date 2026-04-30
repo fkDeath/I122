@@ -33,53 +33,51 @@ $today = [datetime]::Now
 
 if ($groupeName.Length -lt 63){
     Write-Host "$groupeName est plus cours que 63 charactères"
-    if (!$groupeName.StartsWith(" ")){
-        if (!$groupeName.EndsWith(" ")){
-            if (!$groupeName.Contains("*" -or "*#*" -or "*,*" -or "*+*" -or '*"*' -or "*<*" -or "*>*" -or "*@*" -or "*|*" -or ";" -or ":" -or "?")) {
-                Write-Host "$groupeName ne contient pas de charactère interdit"
-                if ($groupeName -as [int16]){
-                    Write-Host "Vous devez fournir un nom de groupe ne pouvant être que des chiffres"
-                }
-                else {
-                    Write-Host "$groupeName n'est pas convertible en INT"
-                    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)){
-                        Write-Host "Vous êtes administrateur"
-                        [bool]$groupeBool = $false
+    if (!$groupeName.StartsWith(" ") -and !$groupeName.EndsWith(" ")){
+        if (!$groupeName.Contains("*" -or "*#*" -or "*,*" -or "*+*" -or '*"*' -or "*<*" -or "*>*" -or "*@*" -or "*|*" -or ";" -or ":" -or "?")) {
+            Write-Host "$groupeName ne contient pas de charactère interdit"
+            if ($groupeName -as [int16]){
+                Write-Host "Vous devez fournir un nom de groupe ne pouvant être que des chiffres"
+            }
+            else {
+                Write-Host "$groupeName n'est pas convertible en INT"
+                if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)){
+                    Write-Host "Vous êtes administrateur"
+                    [bool]$groupeBool = $false
+                    foreach($items in get-localgroup){
+                        if ($groupeName -eq $items) {
+                            $groupeBool = $true
+                            break
+                        }
+                    }
+                    $groupeBool
+                    if ($groupeBool) {
+                        Write-Host "$groupeName éxiste déjà"
+                        Write-Output >> .\export.log "$groupeName n'as pas pu être créer car déjà éxistant le $today"
+                    }
+                    else {
+                        New-LocalGroup $groupeName
+
                         foreach($items in get-localgroup){
                             if ($groupeName -eq $items) {
                                 $groupeBool = $true
                                 break
                             }
-                        }
-                        $groupeBool
-                        if ($groupeBool) {
-                            Write-Host "$groupeName éxiste déjà"
-                            Write-Output >> .\export.log "$groupeName n'as pas pu être créer car déjà éxistant le $today"
-                        }
-                        else {
-                            New-LocalGroup $groupeName
-
-                            foreach($items in get-localgroup){
-                                if ($groupeName -eq $items) {
-                                    $groupeBool = $true
-                                    break
-                                }
-                                else {
-                                    $groupeBool = $false
-                                }
-                            }
-                            if ($groupeBool){
-                                Write-Host "$groupeName a été créer avec succès"
-                                Write-Output >> .\export.log "$(glg $groupeName) a été créer le $today"
-                            } 
                             else {
-                                Write-Output >> .\export.log "$groupeName n'as pas pu être créer le $today"
-                            }                           
+                                $groupeBool = $false
+                            }
                         }
+                        if ($groupeBool){
+                            Write-Host "$groupeName a été créer avec succès"
+                            Write-Output >> .\export.log "$(glg $groupeName) a été créer le $today"
+                        } 
+                        else {
+                            Write-Output >> .\export.log "$groupeName n'as pas pu être créer le $today"
+                        }                           
                     }
-                    else {
-                        Write-Host "Se script requière une permission élèvation de privilèges."
-                    }
+                }
+                else {
+                    Write-Host "Se script requière une permission élèvation de privilèges."
                 }
             } 
         }
