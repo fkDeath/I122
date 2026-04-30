@@ -35,7 +35,7 @@ if ($groupeName.Length -lt 63){
     Write-Host "$groupeName est plus cours que 63 charactères"
     if (!$groupeName.StartsWith(" ")){
         if (!$groupeName.EndsWith(" ")){
-            if (!$groupeName -contains "*#*" -or "*,*" -or "*+*" -or '*"*' -or "*<*" -or "*>*" -or "*@*" -or "*|*"){
+            if (!$groupeName.Contains("*" -or "*#*" -or "*,*" -or "*+*" -or '*"*' -or "*<*" -or "*>*" -or "*@*" -or "*|*" -or ";" -or ":" -or "?")) {
                 Write-Host "$groupeName ne contient pas de charactère interdit"
                 if ($groupeName -as [int16]){
                     Write-Host "Vous devez fournir un nom de groupe ne pouvant être que des chiffres"
