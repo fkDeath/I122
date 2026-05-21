@@ -1,0 +1,34 @@
+﻿1. Get-Service | Where-Object{$_.Status -eq "Running" -and $_.Name -like "w*"} | Out-File -Path .\SEQ-9\output.txt
+2. Get-Service | Where-Object{$_.Status -eq "Running" -and $_.Name -like "w*"} | Export-CSV -Path .\SEQ-9\.output.csv
+3.
+    L'un est un fichier importable notament en SQL l'autre non 
+4. 
+$getFile = Get-Content .\SEQ-9\fable-corbeau-renard.txt
+foreach($line in $getFile) {
+    if($line -like "*renard*"){
+        Write-Host $content
+    }
+}
+
+5. 
+# Méthode 1
+$getContentFileOnePath = Get-Content .\SEQ-9\fable-cigale-fourni.txt
+$getContentFileTwoPath = Get-Content .\SEQ-9\fable-colombe-fourmi.txt
+Write-Host "Fable Cigale Foumi :"
+foreach($line in $getContentFileOnePath){
+    if($line -like "*fourmi*"){
+        Write-Host $line
+    }
+}
+Write-Host "`nFable Colombe Foumi :"
+foreach($line in $getContentFileTwoPath){
+    if($line -like "*fourmi*"){
+        Write-Host $line
+    }
+}
+
+# Méthode 2
+$getFileOnePath = ".\SEQ-9\fable-cigale-fourni.txt"
+$getFileTwoPath = ".\SEQ-9\fable-colombe-fourmi.txt"
+Select-String -Path $getFileOnePath -Pattern "fourmi" -Encoding "utf7"
+Select-String -Path $getFileTwoPath -Pattern "fourmi" -Encoding "utf7"

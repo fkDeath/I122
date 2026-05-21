@@ -1,0 +1,1 @@
+﻿Get-CimInstance -ClassName Cim_ComputerSystem | Format-Table UserName, Domain, SystemType, Status, BootupState
